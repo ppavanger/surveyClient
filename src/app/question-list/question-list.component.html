@@ -1,0 +1,39 @@
+<div class="container draggable-list-container" >
+    <div class="draggable">
+
+        <app-add-question *ngIf="listOfQuestions.length == 0"
+            [item]="item"
+            [model]="model">
+        </app-add-question>
+
+        <ul *ngIf="listOfQuestions.length > 0"
+            dnd-list="listOfQuestions"
+            dnd-sortable-container [sortableData]="listOfQuestions"
+            class="draggable-list-block">
+
+            <li *ngFor="let item of listOfQuestions; let i = index"
+                dnd-sortable [sortableIndex]="i"
+                (onDropSuccess)="dragOneSuccessCallback(i)"
+                class="list-group-item item"
+                style="border: 0;"
+                (mouseenter)="item.show = true"
+                (mouseleave)="item.show = false">
+                <!--On mouseleave need to add call function which will be hide open block  -->
+                <app-type-of-answer
+                    style="width: 100%;"
+                    [item]="item"
+                    [edit]="editEvent">
+                </app-type-of-answer>
+
+                <app-add-question
+                    *ngIf="item.showAddQuestionTypeBlock || item.show"
+                    [item]="item"
+                    [model]="model">
+                </app-add-question>
+
+
+            </li>
+        </ul>
+    </div>
+    <app-modal></app-modal>
+</div>

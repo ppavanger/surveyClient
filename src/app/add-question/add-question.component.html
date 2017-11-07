@@ -1,0 +1,62 @@
+<div class="item">
+	<div class="add-question-btn"
+		(click)="item.showAddQuestionTypeBlock = true"
+		[hidden]="item.showAddQuestionTypeBlock"
+		>
+		+ Add question
+	</div>
+
+	<div class="add-type-of-question-block"
+		*ngIf="item.showAddQuestionTypeBlock"
+		[hidden]="item.showAddQuestionAnswer || !item.showAddQuestionTypeBlock">
+
+		<div style="display: flex;">
+			<span>New question or data element</span>
+			<div style="margin-left: auto;" (click)="item.showAddQuestionTypeBlock = false">
+				<span class="close-btn add-close-btn"></span>
+			</div>
+		</div>
+
+		<div class="type-qestion">
+
+			<div class="code">
+				<span class="code-title">Question Code</span>
+				<input type="text" [(ngModel)]="highestCodeValue" class="code-span">
+			</div>
+
+			<div class="type">
+				<span>Choose a Question Type</span>
+				<select [(ngModel)]="selectedValue" (ngModelChange)="typeOfAnswer($event, highestCodeValue)">
+					<option value="radio">List(Radio)</option>
+					<option value="short_text">Short Text</option>
+					<option value="long_text">Long Text</option>
+					<option value="numerical_input">Numerical Input</option>
+					<option value="date">Date</option>
+					<option value="yes_no">Yes/No</option>
+					<option value="multiple_choice">Multiple Choice</option>
+					<option value="likert_scale">Likert Scale</option>
+				</select>
+			</div>
+
+			<div class="next-btn">
+				<input type="button"
+					name="next"
+					value="Next"
+					[disabled]="!selectedValue"
+					(click)="item.showAddQuestionAnswer = true">
+			</div>
+
+		</div>
+	</div>
+
+	<div *ngIf="item.showAddQuestionAnswer" class="code-square-block">
+		<app-type-of-answer
+			style="width: 100%;"
+			[item]= "item"
+			(closeAnswerBlock)="closeAnswerBlock($event, item)"
+			[model]="model"
+			(question)="selectedValue">
+		</app-type-of-answer>
+
+	</div>
+</div>

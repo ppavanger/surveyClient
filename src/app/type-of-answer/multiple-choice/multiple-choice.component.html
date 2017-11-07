@@ -1,0 +1,49 @@
+<div class="mult-choise-block">
+	<div class="remove-component-block">
+		<span>{{model.templateType}}</span>
+		<app-remove-question [item]="item" style="margin-left: auto;" (click)="remove($event, item)"></app-remove-question>
+	</div>
+
+	<div class="mult-choise">
+		<div class="mult-choise-question-block">
+			<span>Question</span>
+			<input type="text"
+				#questionFocusOut
+				[(ngModel)]="question"
+				(keyup.enter)="createQestion(item, question, $event, questionFocusOut)"
+				(focusout)="createQestion(item, question, $event)">
+		</div>
+		<div style="margin: 5px 0;" *ngIf="setsArr && (model.type == 'radio' || model.type == 'likert_scale' || model.type == 'multiple_choice')">
+			<span>Use Answer Set</span>
+			<select style="width: auto;border-radius: 0;" [(ngModel)]="model.qSet" (ngModelChange)="selectedSet($event, model)">
+				<option [value]="'clear'">None</option>
+				<option *ngFor="let set of setsArr"
+					[value]="set.key">
+					{{set.label}}
+				</option>
+			</select>
+		</div>
+
+		<div *ngIf="model.type == 'radio' || model.type == 'likert_scale' || model.type == 'multiple_choice'" >
+
+			<div *ngFor="let option of model.subQuestions; let i = index;"
+				class="mult-choise-answ-block">
+				<span>{{option.key || option.item_key}}</span>
+				<input type="text"
+					#subQuestionFocusOut
+					[(ngModel)]="option.name"
+					(keyup.enter)="addAnswer(option.name, option.key, option.id, $event, subQuestionFocusOut)"
+					(focusout)="addAnswer(option.name, option.key, option.id, $event)">
+
+				<i class="material-icons" (click)="removeOption(i,option.id)">backspace</i>
+
+			</div>
+		</div>
+
+	</div>
+
+	<div class="add-answ-block" *ngIf="model.type == 'radio' || model.type == 'likert_scale' || model.type == 'multiple_choice'">
+		<input type="button" value="Add Answer Option" (click)="addOption($event)" [disabled]="loading">
+	</div>
+
+</div>

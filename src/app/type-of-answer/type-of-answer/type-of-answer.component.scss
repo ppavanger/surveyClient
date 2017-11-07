@@ -1,0 +1,26 @@
+.index{
+    background: rgb(71,69,63);
+    color: white;
+    text-align: center;
+    padding: 1px;
+    position: relative;
+
+    span{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        max-width: 100px;
+        word-wrap: break-word;
+        display: block;
+
+        -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+        /* Firefox */
+        -moz-transform: translate(-50%, -50%) rotate(-90deg);
+        /* IE */
+        -ms-transform: translate(-50%, -50%) rotate(-90deg);
+        /* Opera */
+        -o-transform: translate(-50%, -50%) rotate(-90deg);
+        /* Internet Explorer */
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    }
+}

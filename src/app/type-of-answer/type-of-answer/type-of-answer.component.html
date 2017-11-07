@@ -1,0 +1,10 @@
+<div style="display: flex;flex-direction: row;margin:5px 0;">
+    <div class="col-lg-1 col-md-1 col-sm-2 index">
+        <span>{{model.code || "Code"}}</span>
+    </div>
+    <app-multiple-choice
+        [questionModel]="questionModel"
+        [model]="model"
+        [item]="item" style="width: 100%;">
+    </app-multiple-choice>
+</div>

@@ -1,0 +1,13 @@
+.close-btn{
+    width: 15px;
+    height: 15px;
+    display: block;
+    text-align: center;
+    line-height: 15px;
+}
+.close-btn:after{
+    display: inline-block;
+}
+.close-btn:hover{
+    cursor: pointer;
+}

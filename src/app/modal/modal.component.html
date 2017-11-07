@@ -1,0 +1,22 @@
+<section *ngIf="modalIsVisible.length > 0" style="
+		position: fixed;
+		background-color: rgba(0,0,0,0.3);
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+	">
+	<div class="modal-block">
+		<div class="modal-header"></div>
+		<div class="modal-content">
+			<h3>{{text}}</h3>
+			<h4>{{questionModel ? questionModel.name : 'This is a question ...'}}</h4>
+
+		</div>
+		<div class="modal-footer">
+			<button class="newer-mind" (click)="close()">Never Mind</button>
+			<button [hidden]="key" class="delete" (click)="delete()">Delete</button>
+			<button *ngIf="key" class="delete" (click)="replace(key, questionModel)">Replace</button>
+		</div>
+	</div>
+</section>

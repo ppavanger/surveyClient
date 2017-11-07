@@ -1,0 +1,115 @@
+.draggable-list-container{
+  height: 100vh;
+  .draggable{
+    padding-bottom: 70px;
+    ul[dnd-list]{
+      min-height: 62px;
+      padding-left: 0px;
+      li{
+        list-style: none;
+        .draggable-list-item{
+          background-color: #fff;
+          display: flex;
+          margin:10px 0;
+          margin-bottom: -1px;
+          .selected{
+            background-color: #dff0d8;
+            color: #3c763d;
+          }
+        }
+      }
+      .dndPlaceholder {
+          background-color: #ddd;
+          display: block;
+          min-height: 62px;
+      }
+      .dndDraggingSource {
+          display: none;
+      }
+    }
+    .add-question-btn{
+      color:orange;
+      width: 140px;
+      height: 70px;
+      border: 2px dashed #dadada;
+      text-align: center;
+      line-height: 70px;
+      margin: 10px auto;
+      cursor: pointer;
+
+      -webkit-transition:all linear 0.5s;
+      transition:all linear 0.5s;
+    }
+  }
+}
+.draggable-list-container::-webkit-scrollbar { width: 0 !important }
+
+.draggable-list-block{
+  .draggable-list-item{
+    background-color: rgb(222,221,212) !important;
+    .index{
+      background: rgb(71,69,63);
+      color: white;
+      text-align: center;
+      padding: 1px;
+      position: relative;
+      span{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        max-width: 100px;
+        word-wrap: break-word;
+        display: block;
+
+        -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+        /* Firefox */
+        -moz-transform: translate(-50%, -50%) rotate(-90deg);
+        /* IE */
+        -ms-transform: translate(-50%, -50%) rotate(-90deg);
+        /* Opera */
+        -o-transform: translate(-50%, -50%) rotate(-90deg);
+        /* Internet Explorer */
+        filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+      }
+    }
+    .question-type{
+        text-align: center;
+        padding: 15px 3px;
+        max-width: 60px;
+    }
+    .question-block{
+      padding: 15px 10px;
+      .question{
+        padding: 10px 10px;
+        background: white;
+        margin: 10px 15px;
+      }
+      div{
+        .question-btn{
+          margin: 5px 0px;
+        }
+      }
+    }
+    .close-btn-block{
+      width: 40px;
+      position: relative;
+      .close-btn{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 15px;
+        height: 15px;
+        line-height: 15px;
+        text-align: center;
+      }
+    }
+  }
+}
+.close-btn:after{
+    display: inline-block;
+    content: "x"; /* This will render the 'X' */
+}
+.close-btn:hover{
+    background-color: rgba(71,69,63,0.3);
+    cursor: pointer;
+}
